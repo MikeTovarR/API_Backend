@@ -1,0 +1,20 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pwd
+      MYSQL_DATABASE: API_DB
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_pwd
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
